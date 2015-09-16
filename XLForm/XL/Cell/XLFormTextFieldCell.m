@@ -325,7 +325,7 @@ NSString *const XLFormTextFieldLengthPercentage = @"textFieldLengthPercentage";
             } else {
                 self.rowDescriptor.value = self.textField.text;
             }
-
+        }
     } else {
         self.rowDescriptor.value = nil;
     }
