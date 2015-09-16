@@ -420,7 +420,9 @@
 -(XLFormRowDescriptor *)formRowFormMultivaluedFormSection:(XLFormSectionDescriptor *)formSection
 {
     if (formSection.multivaluedRowTemplate){
-        return [formSection.multivaluedRowTemplate copy];
+        XLFormRowDescriptor *template = [formSection.multivaluedRowTemplate copy];
+        template.valueFormatter = formSection.multivaluedRowTemplate.valueFormatter;
+        return template;
     }
     XLFormRowDescriptor * formRowDescriptor = [[formSection.formRows objectAtIndex:0] copy];
     formRowDescriptor.tag = nil;
