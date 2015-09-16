@@ -143,7 +143,11 @@
     self.editingAccessoryType = self.accessoryType;
     self.selectionStyle = self.rowDescriptor.isDisabled || [self.rowDescriptor.rowType isEqualToString:XLFormRowDescriptorTypeInfo] ? UITableViewCellSelectionStyleNone : UITableViewCellSelectionStyleDefault;
     self.textLabel.text = [NSString stringWithFormat:@"%@%@", self.rowDescriptor.title, self.rowDescriptor.required && self.rowDescriptor.sectionDescriptor.formDescriptor.addAsteriskToRequiredRowsTitle ? @"*" : @""];
-    self.detailTextLabel.text = [self valueDisplayText];    
+    self.detailTextLabel.text = [self valueDisplayText];
+    
+    if ([self selectedIndex] > -1){
+        [_pickerView selectRow:[self selectedIndex] inComponent:0 animated:NO];
+    }
 }
 
 -(void)formDescriptorCellDidSelectedWithFormController:(XLFormViewController *)controller
