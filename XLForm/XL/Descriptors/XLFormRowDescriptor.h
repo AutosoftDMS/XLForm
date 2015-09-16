@@ -53,6 +53,15 @@ typedef void(^XLOnChangeBlock)(id __nullable oldValue,id __nullable newValue,XLF
 @property (nullable) Class valueTransformer;
 @property UITableViewCellStyle cellStyle;
 
+@property BOOL useValueFormatterDuringInput;
+@property NSFormatter *valueFormatter;
+
+// returns the display text for the row descriptor, taking into account NSFormatters and default placeholder values
+- (NSString*) displayTextValue;
+
+// returns the editing text value for the row descriptor, taking into account NSFormatters.
+- (NSString*) editTextValue;
+
 @property (copy, nullable) XLOnChangeBlock onChangeBlock;
 
 @property (nonatomic, readonly, nonnull) NSMutableDictionary * cellConfig;
