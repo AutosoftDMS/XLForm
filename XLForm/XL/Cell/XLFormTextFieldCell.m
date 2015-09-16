@@ -296,8 +296,15 @@ NSString *const XLFormTextFieldLengthPercentage = @"textFieldLengthPercentage";
             // use generic getObjectValue:forString:errorDescription and stringForObjectValue
             NSString *errorDescription = nil;
             NSString *objectValue = nil;
+            NSString *textFieldText = textField.text;
             
-            if ([ self.rowDescriptor.valueFormatter getObjectValue:&objectValue forString:textField.text errorDescription:&errorDescription]) {
+            if ([self.rowDescriptor.rowType isEqualToString:XLFormRowDescriptorTypeDecimal] ||
+                [self.rowDescriptor.rowType isEqualToString:XLFormRowDescriptorTypeNumber] ||
+                [self.rowDescriptor.rowType isEqualToString:XLFormRowDescriptorTypeInteger]){
+                textFieldText = [textFieldText stringByReplacingOccurrencesOfString:@"," withString:@""];
+            }
+            
+            if ([ self.rowDescriptor.valueFormatter getObjectValue:&objectValue forString:textFieldText errorDescription:&errorDescription]) {
                 NSString *formattedValue = [self.rowDescriptor.valueFormatter stringForObjectValue:objectValue];
                 
                 self.rowDescriptor.value = objectValue;
