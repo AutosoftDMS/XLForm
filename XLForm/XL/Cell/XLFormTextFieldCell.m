@@ -289,7 +289,6 @@ NSString *const XLFormTextFieldLengthPercentage = @"textFieldLengthPercentage";
 
 - (void)textFieldDidChange:(UITextField *)textField{
     if([self.textField.text length] > 0) {
-        NSLog(@"text %@",textField.text);
         BOOL didUseFormatter = NO;
         
         if (self.rowDescriptor.valueFormatter && self.rowDescriptor.useValueFormatterDuringInput)
