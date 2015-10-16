@@ -263,13 +263,13 @@ NSString *const XLFormTextFieldLengthPercentage = @"textFieldLengthPercentage";
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    [self.formViewController beginEditing:self.rowDescriptor];
-    [self.formViewController textFieldDidBeginEditing:textField];
-    
     // set the input to the raw value if we have a formatter and it shouldn't be used during input
     if (self.rowDescriptor.valueFormatter) {
         self.textField.text = [self.rowDescriptor editTextValue];
     }
+    
+    [self.formViewController beginEditing:self.rowDescriptor];
+    [self.formViewController textFieldDidBeginEditing:textField];
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
