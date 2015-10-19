@@ -258,6 +258,12 @@ NSString *const XLFormTextFieldLengthPercentage = @"textFieldLengthPercentage";
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if (range.location == textField.text.length && [string isEqualToString:@" "]) {
+        
+        // ignore replacement string and add your own
+        textField.text = [textField.text stringByAppendingString:@"\u00a0"];
+        return NO;
+    }
     return [self.formViewController textField:textField shouldChangeCharactersInRange:range replacementString:string];
 }
 
@@ -323,7 +329,7 @@ NSString *const XLFormTextFieldLengthPercentage = @"textFieldLengthPercentage";
             } else if ([self.rowDescriptor.rowType isEqualToString:XLFormRowDescriptorTypeInteger]){
                 self.rowDescriptor.value = @([self.textField.text integerValue]);
             } else {
-                self.rowDescriptor.value = self.textField.text;
+                self.rowDescriptor.value = [self.textField.text stringByReplacingOccurrencesOfString:@"\u00a0" withString:@" "];
             }
         }
     } else {
