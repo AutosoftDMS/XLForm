@@ -26,7 +26,11 @@
 #import "XLFormRowDescriptor.h"
 #import <Foundation/Foundation.h>
 
-@interface XLFormOptionsObject : NSObject <XLFormOptionObject>
+@interface XLFormOptionsObject : NSObject <XLFormOptionObject> {
+    NSString *tag;
+}
+
+@property (nonatomic, readwrite) NSString *tag;
 
 +(XLFormOptionsObject *)formOptionsObjectWithValue:(id)value displayText:(NSString *)displayText;
 +(XLFormOptionsObject *)formOptionsOptionForValue:(id)value fromOptions:(NSArray *)options;

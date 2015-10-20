@@ -31,6 +31,8 @@
     id _formValue;
 }
 
+@synthesize tag;
+
 +(XLFormOptionsObject *)formOptionsObjectWithValue:(id)value displayText:(NSString *)displayText
 {
     return [[XLFormOptionsObject alloc] initWithValue:value displayText:displayText];
@@ -42,6 +44,7 @@
     if (self){
         _formValue = value;
         _formDisplaytext = displayText;
+        tag = @"";
     }
     return self;
 }
