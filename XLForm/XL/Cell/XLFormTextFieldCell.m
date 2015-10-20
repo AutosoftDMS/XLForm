@@ -28,6 +28,7 @@
 #import "XLFormRowDescriptor.h"
 #import "XLForm.h"
 #import "XLFormTextFieldCell.h"
+#import "XLFormTextField.h"
 
 NSString *const XLFormTextFieldLengthPercentage = @"textFieldLengthPercentage";
 
@@ -178,7 +179,7 @@ NSString *const XLFormTextFieldLengthPercentage = @"textFieldLengthPercentage";
 -(UITextField *)textField
 {
     if (_textField) return _textField;
-    _textField = [UITextField autolayoutView];
+    _textField = [XLFormTextField autolayoutView];
     return _textField;
 }
 
